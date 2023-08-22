@@ -70,23 +70,26 @@ def nums():
 def elka():
     high_elka = int(input("Введите высоту елки (нечетное число): "))
     for i in range(high_elka):
-        print(" "*(high_elka-1-i), "*"*(1+i*2))
+        print(" " * (high_elka - 1 - i), "*" * (1 + i * 2))
+
 
 # Вывести таблицу умножения
 
 def multy_table():
     for j in range(2, 11):
         for i in range(2, 6):
-            print(f"{i:^3} * {j:^3} = {i*j:^3}", end="\t\t\t")
+            print(f"{i:^3} * {j:^3} = {i * j:^3}", end="\t\t\t")
         print()
     print()
     print()
     for j in range(2, 11):
         for i in range(6, 10):
-            print(f"{i:^3} * {j:^3} = {i*j:^3}", end="\t\t\t")
+            print(f"{i:^3} * {j:^3} = {i * j:^3}", end="\t\t\t")
         print()
 # disc()
 # leap_year()
 # nums()
 # elka()
+
+
 # multy_table()
