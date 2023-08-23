@@ -116,9 +116,29 @@ def task7():
 # Код должен расширяться на любое большее количество друзей.
 
 def task8():
-    turists = {"Vasiliy": (),
-               "Vladimir": (),
-               "Alex": ()}
+    tourists = {"Vasiliy": ('palatka', 'topor', 'spichki', 'eda'),
+                "Vladimir": ('palatka', 'voda', 'spichki'),
+                "Alex": ('palatka', 'katelok', 'kompas', 'mangal')}
+
+    # Вещи, которые есть у всех
+    all_have = set(tourists[random.choice(list(tourists.keys()))])
+    for tourist in tourists.values():
+        all_have = all_have & set(tourist)
+    print("Вещи, которые есть у всех:", *all_have, sep='\n')
+
+    # Все вещи, взятые в поход
+    all_things = set()
+    for things in tourists.values():
+        all_things |= set(things)
+    print("Все вещи, взятые в поход:", *all_things, sep='\n')
+
+    # Владелец, и его уникальные вещи
+    for owner in tourists.keys():
+        unic_things = set(tourists[owner])
+        for things_owner in tourists.keys():
+            if unic_things != set(tourists[things_owner]):
+                unic_things -= set(tourists[things_owner])
+        print("Владелец и его уникальные вещи:", owner, *unic_things, sep="\n")
 
 
 # task1()
