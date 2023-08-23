@@ -113,7 +113,7 @@ def task7():
 # ✔Какие вещи уникальны, есть только у одного друга
 # ✔Какие вещи есть у всех друзей кроме одного и имя того, у кого данная вещь отсутствует
 # ✔Для решения используйте операции с множествами.
-# Код должен расширяться на любое большее количество друзей.
+# Код должен расширяться на любое бОльшее количество друзей.
 
 def task8():
     tourists = {"Vasiliy": ('palatka', 'topor', 'spichki', 'eda'),
@@ -136,9 +136,19 @@ def task8():
     for owner in tourists.keys():
         unic_things = set(tourists[owner])
         for things_owner in tourists.keys():
-            if unic_things != set(tourists[things_owner]):
+            if owner != things_owner:
                 unic_things -= set(tourists[things_owner])
         print("Владелец и его уникальные вещи:", owner, *unic_things, sep="\n")
+
+    # Турист, и вещь, которой нет только у него
+    for name in tourists.keys():
+        things_name = set(tourists[name])
+        other_things = set()
+        for tourist_name in tourists.keys():
+            if name != tourist_name:
+                other_things |= set(tourists[tourist_name])
+            other_things -= things_name
+        print("Турист, и вещи, которые есть у всех, но нет у него:", name, *other_things, sep='\n')
 
 
 # task1()
@@ -148,4 +158,4 @@ def task8():
 # task5()
 # task6()
 # task7()
-task8()
+# task8()
