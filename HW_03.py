@@ -43,7 +43,7 @@ def task2():
     text_adapted = re.sub(r'[^\w\s]', " ", text).lower().split()
     text_adapted = sorted(text_adapted, key=text_adapted.count, reverse=True)
     often_word = set()
-    for word in text_adapted:
+    for word in text_adapted: # переписать под while
         if len(often_word) >= 10:
             break
         else:
