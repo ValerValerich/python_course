@@ -10,8 +10,20 @@ import os
 def reqursive_work_with_the_directory(dir_in: str = os.getcwd()):
     res = []
     for topdir, dirs, files in os.walk(dir_in):
-
+        dict_of_dir = {
+            "adress": topdir,
+            "is_dir": True,
+            "size_dir": str(sum(os.path.getsize(os.path.join(topdir, file)) for file in files))
+        }
+        res.append(dict_of_dir)
         for file in files:
-            print(file)
+            dict_of_file = {
+                "adress": os.path.join(topdir, file),
+                "is_dir": False,
+                "size_file": str(os.path.getsize(os.path.join(topdir, file)))
+            }
+            res.append(dict_of_file)
+    print(*res, sep='\n')
 
-reqursive_work_with_the_directory()
+
+reqursive_work_with_the_directory('E:\PYTHON\Seminar\work_with_files')
