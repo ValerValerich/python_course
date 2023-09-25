@@ -24,8 +24,8 @@ gen_csv_with_random_int()
 
 def start_func_with_csv_parametr(func):
     def wrap_func():
-        with open('csv_for_hw_09.csv', 'r') as file:
-            reader = csv.reader(file)
+        with open('csv_for_hw_09.csv', 'r') as f:
+            reader = csv.reader(f)
             for row in reader:
                 if row[0].isdigit():
                     a, b, c = map(int, row)
@@ -35,22 +35,22 @@ def start_func_with_csv_parametr(func):
     return wrap_func
 
 
-def save_in_json(*a):
-    print(*a)
-    def get_func(func):
-        def wrap_in_json(*args):
-            res = func(*args)
-            data = {
-                "args": args,
+def save_in_json(func):
+# Не работает, не понимаю почему
+    def wrap_in_json(*args, **kwargs):
+        res = func(*args, **kwargs)
+        data = {
+            "args": args,
+            "kwargs": kwargs,
+            "res": res
+        }
+        with open("json_with_parametres_func.json", 'w', encoding="utf-8") as json_f:
 
-                "res": res
-            }
-            with open("json_with_parametrs_func.json", 'w') as json_f:
-                json.dump(data, json_f)
+            json.dump(data, json_f, indent=4)
+        return res
+    return wrap_in_json
 
-        return wrap_in_json
 
-    return get_func
 
 
 @save_in_json
