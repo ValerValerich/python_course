@@ -22,6 +22,27 @@ def gen_csv_with_random_int():
 gen_csv_with_random_int()
 
 
+def save_in_json(filename='json_with_param_func.json'):
+    def decorator(func):
+        def wrapper(data: dict):
+            with open('csv_for_hw_09.csv', 'r') as csv_file:
+                for row in csv_file:
+                    if row.isdigit():
+                        result = func(*row)
+
+                        data[str(*row)] = {
+                            'args': row,
+                            'result': result
+                        }
+                        with open(filename, 'a') as file:
+                            file.write(json.dumps(data) + '\n')
+
+        return wrapper
+
+    return decorator
+
+
+
 def start_func_with_csv_parametr(func):
     def wrap_func():
         with open('csv_for_hw_09.csv', 'r') as f:
@@ -34,25 +55,6 @@ def start_func_with_csv_parametr(func):
 
     return wrap_func
 
-
-def save_in_json(func):
-# Не работает, не понимаю почему
-    def wrap_in_json(*args, **kwargs):
-        res = func(*args, **kwargs)
-        data = {
-            "args": args,
-            "kwargs": kwargs,
-            "res": res
-        }
-        with open("json_with_parametres_func.json", 'w', encoding="utf-8") as json_f:
-
-            json.dump(data, json_f, indent=4)
-        return res
-    return wrap_in_json
-
-
-
-
 @save_in_json
 @start_func_with_csv_parametr
 def root_search(a, b, c):
@@ -64,3 +66,4 @@ def root_search(a, b, c):
         return round(-b / (2 * a), 5)
     else:
         return "Нет корней"
+
