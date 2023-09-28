@@ -134,5 +134,6 @@ spanky = Dog('Cпанки', 3, breed="yuork")
 tom = Cat('Tom', 15, color="Blue")
 dorry = Fish('Dorry', 1, habitat="Дом")
 
-for animal in [spanky, tom, dorry]:
-    print(animal.get_special())
+#for animal in [spanky, tom, dorry]:
+#    print(animal.get_special())
+
