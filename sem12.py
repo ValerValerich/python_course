@@ -167,3 +167,8 @@ rect = Reactangle_2(4, 5)
 print(rect)
 rect.side_b = 10
 print(rect)
+
+
+try:
+    pass
+except

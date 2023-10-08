@@ -45,28 +45,28 @@ def save_in_json(path: str = 'users.json'):
         name = input('Name\n')
         if not name:
             break
-        while True:
-            u_id = input("id\n")
-            if u_id.isdigit():
-                if int(u_id) not in id_list:
-                    u_id = int(u_id)
-                    break
-                else:
-                    print('This ID is already in the database')
-            else:
-                print('Must be an Integer')
-        while True:
-            u_lvl = input('lvl\n')
-            if u_lvl.isdigit() and 0 < int(u_lvl) < 8:
+    while True:
+        u_id = input("id\n")
+        if u_id.isdigit():
+            if int(u_id) not in id_list:
+                u_id = int(u_id)
                 break
             else:
-                print('Must be between 1 and 7')
-        if u_lvl in users_data:
-            users_data[u_lvl].append((name, u_id))
+                print('This ID is already in the database')
         else:
-            users_data[u_lvl] = [(name, u_id)]
-        with open(path, 'w', encoding='UTF-8') as file:
-            json.dump(users_data, file, indent=4, ensure_ascii=False)
+            print('Must be an Integer')
+    while True:
+        u_lvl = input('lvl\n')
+        if u_lvl.isdigit() and 0 < int(u_lvl) < 8:
+            break
+        else:
+            print('Must be between 1 and 7')
+    if u_lvl in users_data:
+        users_data[u_lvl].append((name, u_id))
+    else:
+        users_data[u_lvl] = [(name, u_id)]
+    with open(path, 'w', encoding='UTF-8') as file:
+        json.dump(users_data, file, indent=4, ensure_ascii=False)
 
 
 # save_in_json()
