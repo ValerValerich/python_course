@@ -19,5 +19,6 @@ class Test(unittest.TestCase):
     def test_komplex(self):
         self.assertTrue(del_other_symbol('Wew _wыавываefefe,.:;'), 'wew wefefe')
 
+
 if __name__ == '__main__':
     unittest.main()

@@ -2,19 +2,26 @@
 # 📌Напишите 3-7 тестов unittest для данного проекта.
 # 📌Используйте setUp
 
-from HW_12 import Student
+from HW_12 import Student  # с юзерами из 13 семинара у меня беда, взял студентов
 import unittest
 
 
 class TestUser(unittest.TestCase):
     def setUp(self):
-        self.f_user = Student("Iv", "Ivanich", "Ivanov")
+        self.f_user = Student("Ivan", "Ivanich", "Ivanov")
+        self.s_user = Student("Timur", "Ivanich", "Ivanov")
 
+    def test_len_name(self):
+        self.assertGreaterEqual(len(self.f_user.name), 3)
 
-    def test_name(self):
+    # Не понял, как бы я мог проверить на вызов исключения по маленькой букве в имени. С остальным вроде ясно
+    def test_name_title(self):
+        args = ["timur", "Ivanich", "Ivanov"]
+        self.assertRaises(ValueError, self.s_user, *args)
 
-        self.assertTrue(len(self.f_user.name()) > 3, msg='Слишком короткое имя')
+    def test_patronymic(self):
+        self.assertTrue(self.f_user.patronymic.isalpha())
 
 
 if __name__ == '__main__':
-    unittest.main()
+    unittest.main(verbosity=True)
