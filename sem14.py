@@ -17,13 +17,14 @@ def del_other_symbol(str_: str) -> str:
     >>> del_other_symbol('Wew _wыавываefefe,.:;') == 'wew wefefe'
     True
     """
-    str_=str_.lower()
+    str_ = str_.lower()
     res = ''
     for sym in str_:
         if sym in ascii_lowercase + ' ':
             res += sym
 
     return res
+
 
 # print(del_other_symbol('xfgfrKJUiu KIU kjh43 hukh 23232 123 h huk'))
 
@@ -38,9 +39,9 @@ def del_other_symbol(str_: str) -> str:
 
 if __name__ == '__main__':
     import doctest
+
     doctest.testmod(verbose=True)
 
 # То же, но при помощи unittest в файле sem14test.py
 # то же, с pytest в фалйе sem14pytest.py
 # Тест класса rectangle в файле sem14testRect.py
-

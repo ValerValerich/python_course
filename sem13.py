@@ -134,6 +134,7 @@ class User:
         self.lvl = lvl
 
 
+
 def load_users():
     users_set = set()
     with open('users_sem13.json', 'r', encoding='UTF-8') as file:
@@ -143,6 +144,7 @@ def load_users():
             name, u_id = user
             users_set.add(User(name, u_id, lvl))
     return users_set
+
 
 
 data = load_users()
