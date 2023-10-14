@@ -18,6 +18,10 @@ class TestRect(unittest.TestCase):
     def test_add(self):
         self.assertEqual(self.first_rec + self.second_rec, Rectangle(6, 16))
 
+    def tearDown(self):
+        del self.first_rec
+        del self.second_rec
+
 
 if __name__ == '__main__':
     unittest.main(verbosity=1)
