@@ -1,0 +1,3 @@
+2023-10-15 22:56:58,145-INFO                -__main__:args = (2, 2); kwargs = {}, res = 4
+2023-10-15 22:56:58,145-INFO                -__main__:args = (0, 2); kwargs = {}, res = 2
+2023-10-15 22:56:58,146-INFO                -__main__:args = (-9, 2); kwargs = {}, res = -7
